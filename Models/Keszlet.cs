@@ -15,7 +15,7 @@ namespace Parkolo.Models
         public string AlvazSzam { get; set; }
 
         [Display(Name = "Típus")]
-        [StringLength(10)]
+        [StringLength(50)]
         public string Tipus { get; set; }
 
         [Display(Name = "Kulcs Szám")]

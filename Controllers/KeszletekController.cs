@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -62,6 +63,7 @@ namespace Parkolo.Controllers
         }
 
         // GET: Keszletek/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -72,6 +74,7 @@ namespace Parkolo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,AlvazSzam,Tipus,KulcsSzam,Pozicio")] Keszlet keszlet)
         {
             if (ModelState.IsValid)
@@ -84,6 +87,7 @@ namespace Parkolo.Controllers
         }
 
         // GET: Keszletek/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -104,6 +108,7 @@ namespace Parkolo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,AlvazSzam,Tipus,KulcsSzam,Pozicio")] Keszlet keszlet)
         {
             if (id != keszlet.Id)
@@ -135,6 +140,7 @@ namespace Parkolo.Controllers
         }
 
         // GET: Keszletek/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -155,6 +161,7 @@ namespace Parkolo.Controllers
         // POST: Keszletek/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var keszlet = await _context.Keszlet.FindAsync(id);
