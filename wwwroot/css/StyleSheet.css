@@ -1,0 +1,36 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+.navbar {
+    background-color: #879cc6;
+    color: white;
+}
+.container {
+    color: black;
+}
+a:link, a:visited {
+    font-size: 24px;
+    color: darkblue;
+}
+
+body {
+
+    margin-bottom: 60px;
+    background-image: linear-gradient( 135deg, #879cc6 10%, #d0cfd5 100%);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 40px;
+    background-color: #dcdbe2;
+    opacity: 0.8;
+    font-size: 15px;
+}
+
+.text-justify {
+    text-align: justify;
+}

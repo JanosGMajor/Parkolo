@@ -1,0 +1,63 @@
+﻿@model Parkolo.Models.Keres
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Autók</h1>
+
+<p>
+    <a asp-action="Create">Felvitel</a>
+</p>
+
+<form asp-action="Index" asp-controller="Keszletek" method="get">
+    <input type="text" asp-for="AlvazSzamKeres" />
+    <select asp-for="TipusKeres" asp-items="Model.TipusSelect">
+        <option value="">All</option>
+    </select>
+
+    <button type="submit">Kereses</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KeszletLista[0].AlvazSzam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeszletLista[0].Tipus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeszletLista[0].KulcsSzam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeszletLista[0].Pozicio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.KeszletLista) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlvazSzam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KulcsSzam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pozicio)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Szerkesztés</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Részletek</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Törlés</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
